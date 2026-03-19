@@ -1,0 +1,22 @@
+{# App Home – embedded in Shopify Admin. Requires App Bridge and Polaris. #}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}App Home{% endblock %}</title>
+    <script
+        src="https://cdn.shopify.com/shopifycloud/app-bridge.js"
+        data-api-key="{{ client_id }}"
+    ></script>
+    <script src="https://cdn.shopify.com/shopifycloud/polaris.js"></script>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    {% block body %}
+        <h1>Welcome to your Shopify App</h1>
+        <p>Your app is running with Symfony and shopify-app-php.</p>
+    {% endblock %}
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

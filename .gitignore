@@ -8,3 +8,23 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+
+###> phpunit/phpunit ###
+.phpunit.result.cache
+###< phpunit/phpunit ###
+
+###> node ###
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+###< node ###
+
+###> misc ###
+.DS_Store
+Thumbs.db
+composer.phar
+*.db
+*.sqlite
+*.sqlite3
+###< misc ###

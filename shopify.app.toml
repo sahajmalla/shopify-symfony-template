@@ -1,0 +1,22 @@
+# Shopify App configuration
+# Run "shopify app init --reset" to populate client_id and other values from your Partner Dashboard.
+# See https://shopify.dev/docs/apps/build/configuration
+
+client_id = ""
+name = "My Symfony Shopify App"
+application_url = "https://your-app-url.com"
+embedded = true
+
+# Customize scopes for your app. Start minimal; add more as needed.
+# See https://shopify.dev/docs/api/usage/access-scopes
+[access_scopes]
+scopes = "read_products"
+
+[webhooks]
+api_version = "2026-01"
+# Mandatory GDPR/compliance webhooks (see https://shopify.dev/docs/apps/build/compliance/privacy-law-compliance).
+# Replace YOUR_APP_URL with your application_url (e.g. from DEFAULT_URI in production).
+# APP_UNINSTALLED is registered programmatically per shop on first app open.
+[[webhooks.subscriptions]]
+compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
+uri = "https://YOUR_APP_URL/webhooks"

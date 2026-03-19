@@ -1,0 +1,9 @@
+# Shopify CLI web configuration for local development
+# See https://shopify.dev/docs/api/shopify-cli/configuration
+
+name = "My Symfony Shopify App"
+roles = ["frontend", "backend"]
+webhooks_path = "/webhooks/app/uninstalled"
+
+[commands]
+dev = "symfony server:start --port=${PORT:-8000} --allow-http"

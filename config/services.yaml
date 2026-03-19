@@ -7,6 +7,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+    shopify_client_id: '%env(SHOPIFY_API_KEY)%'
 
 services:
     # default configuration for services in *this* file
@@ -18,6 +19,26 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
     App\:
         resource: '../src/'
+
+    App\Shopify\ShopifyAppFactory:
+        arguments:
+            $clientId: '%env(SHOPIFY_API_KEY)%'
+            $clientSecret: '%env(SHOPIFY_API_SECRET)%'
+            $oldClientSecret: '%env(default::SHOPIFY_OLD_API_SECRET)%'
+
+    App\Shopify\Storage\AccessTokenCrypto:
+        arguments:
+            $encryptionKeyBase64: '%env(default::SHOPIFY_TOKEN_ENCRYPTION_KEY)%'
+
+    App\Shopify\Storage\AccessTokenStorageInterface: '@App\Shopify\Storage\DoctrineAccessTokenStorage'
+
+    App\Shopify\WebhookRegistrar:
+        arguments:
+            $baseUrl: '%env(DEFAULT_URI)%'
+
+    App\Controller\AppHomeController:
+        arguments:
+            $shopifyClientId: '%shopify_client_id%'
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
