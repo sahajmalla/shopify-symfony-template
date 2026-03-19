@@ -11,6 +11,8 @@
 
 ###> phpunit/phpunit ###
 .phpunit.result.cache
+/.phpunit.cache/
+/bin/phpunit
 ###< phpunit/phpunit ###
 
 ###> node ###
@@ -21,6 +23,10 @@ yarn-error.log*
 ###< node ###
 
 ###> misc ###
+.idea/
+.vscode/
+.shopify/
+.shopify-cli/
 .DS_Store
 Thumbs.db
 composer.phar
